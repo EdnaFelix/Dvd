@@ -9,7 +9,7 @@ public class Main {
     
     public static void main(String[] args) {
         
-        ArrayList <Dvd> acao = new ArrayList();
+        ArrayList <Dvd> arrayFilmes = new ArrayList();
         Map<Integer, Dvd> mapa = new HashMap<>();
         Scanner scan = new Scanner(System.in);
         String escolha = null;
@@ -48,7 +48,7 @@ public class Main {
                         break;
                         default: System.out.println("Opção invalida");
                     }
-                    acao.add(d);
+                    arrayFilmes.add(d);
                     mapa.put(d.numero,d);
                     break;
                 
@@ -56,11 +56,11 @@ public class Main {
                     System.out.println("Escolha o titulo que deseja excluir: ");
                     String escolhaexcluir = scan.nextLine();
                     int aux = 0;
-                    for(int i = 0; i <acao.size();i++){
-                        Dvd l =acao.get(i);
+                    for(int i = 0; i <arrayFilmes.size();i++){
+                        Dvd l =arrayFilmes.get(i);
                         if(l.titulo.equals(escolhaexcluir)){
                             mapa.remove(l);
-                            l=acao.remove(i);
+                            l=arrayFilmes.remove(i);
                             System.out.println("O titulo: "+l.titulo+" foi excluido");
                             aux = 1;
                         }
@@ -73,8 +73,8 @@ public class Main {
                 case "3":
                     System.out.println("Escolha o titulo que deseja alterar: ");
                     String escolhaalterar = scan.nextLine();
-                    for(int i = 0; i <acao.size();i++){
-                        Dvd l = acao.get(i);
+                    for(int i = 0; i <arrayFilmes.size();i++){
+                        Dvd l = arrayFilmes.get(i);
                         if(l.titulo.equals(escolhaalterar)){
                             System.out.println("Escolha um genero");
                             System.out.println("(1)Acao");
@@ -98,8 +98,8 @@ public class Main {
                             mapa.put(d.numero,d);
                             mapa.remove(l);
                             
-                            acao.remove(i);
-                            acao.add(i, d);
+                            arrayFilmes.remove(i);
+                            arrayFilmes.add(i, d);
                             
                         }
                     }
@@ -107,17 +107,17 @@ public class Main {
                     
                 case "4":
             
-                    Collections.sort(acao,new ComparaGenero());
+                    Collections.sort(arrayFilmes,new ComparaGenero());
                     
-                    for(Dvd c: acao){
+                    for(Dvd c: arrayFilmes){
                         System.out.println(c.genero + ": " + c.titulo);
                     }
                     break; 
                     
                 case "5":
-                    Collections.sort(acao,new ComparaTitulo());
+                    Collections.sort(arrayFilmes,new ComparaTitulo());
                     
-                    for(Dvd c: acao){
+                    for(Dvd c: arrayFilmes){
                         System.out.println(c.titulo);
                     }
                     
